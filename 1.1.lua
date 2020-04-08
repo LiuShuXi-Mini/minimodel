@@ -1440,8 +1440,8 @@ end
 function class.Area:replaceAreaRangeBlock(posbeg,posend,srcblockid,destblockid,face)
     return ErrorCode.OK
 end
-
-
+function ScriptSupportEvent:registerEvent(Event,Functions)
+end
 --恭喜你到这里来了
 --你是来编代码的吗？
 --我猜你不是
