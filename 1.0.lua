@@ -7,7 +7,11 @@
 --不能使用obds,ay,ret,dr,ps作为全局变量名
 --Developers:
 --Liushuxi
---Liushuxi
+--用户协议：
+--1.bug导致的后果作者不承担（逃）（似乎不能导致什么后果。。。）
+--2.部分函数（比如事件函数ScriptSupportEvent:registerEvent）IDE会报错，那个作者尽力了，不知道怎么写
+--3.禁止用于商业用途，转载请标明出处
+--4.禁止不反馈bug（逃）
 --Bug fixed:
 --Not Angthing
 ------------------------忽略这个---------------------------
@@ -319,22 +323,21 @@ ScriptSupportEvent = {}
 function ScriptSupportEvent:registerEvent(event,functions)
 --emmm作者不晓得怎么写啊
 end
---常量全部更新完成
---下面是接口更新情况。
+--你可以直接调用class里面的命令，你也可以使用new函数赋值table然后调用
 class = {
 World = {};
 Game = {};
 Block = {};
 Actor = {};
 Player = {};
-Creature = {};--未更新
+Creature = {};
 UI = {};
-Area = {};--未更新
+Area = {};
 Chat = {};
-Team = {};--未更新
+Team = {};
 Item = {};
-Backpack = {};--未更新
-WorldContainer = {};--未更新
+Backpack = {};
+WorldContainer = {};
 MapMark = {};
 Spawnport = {};
 MiniTimer = {};
@@ -1050,14 +1053,402 @@ end
 function class.MiniTimer:showTimerTips(playerids,timerid,text,show)
     return ErrorCode.OK
 end
+function class.Team:getNumTeam()
+    return ErrorCode.OK,10
+end
+function class.Team:getTeamPlayerNum(teamid,alive)
+    return ErrorCode.OK,10
+end
+function class.Team:getTeamPlayers(teamid,alive)
+    return ErrorCode.OK,10
+end
+function class.Team:randomTeamPlayer(teamid,alive)
+    return ErrorCode.OK,10
+end
+function class.Team:getTeamCreatures(teamid)
+    local ay = {1,2,3,4,5,6,7,8,9,0}
+    return ErrorCode.OK,ay
+end
+function class.Team:setTeamScore(teamid,score)
+    return ErrorCode.OK
+end
+function class.Team:getTeamScore(teamid)
+    return ErrorCode.OK,10
+end
+function class.Team:addTeamScore(teamid,score)
+    return ErrorCode.OK
+end
+function class.Team:setTeamResults(teamid,result)
+    return ErrorCode.OK
+end
+function class.Team:getTeamResults(teamid)
+    return ErrorCode.OK,10
+end
+function class.Team:setTeamPlayersResults(teamid,result)
+    return ErrorCode.OK
+end
+function class.Team:setTeamDieTimes(teamid,times)
+    return ErrorCode.OK
+end
+function class.Team:getTeamDieTimes(teamid)
+    return ErrorCode.OK,10
+end
+function class.Team:addTeamDieTimes(teamid)
+    return ErrorCode.OK
+end
+function class.Team:changePlayerTeam(playerid,teamid)
+    return ErrorCode.OK
+end
+function class.WorldContainer:addFurnace(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:removeFurnace(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:checkFurnace(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:getFurnaceHeatPercent(x,y,z)
+    return ErrorCode.OK,100
+end
+function class.WorldContainer:getFurnaceMeltPercent(x,y,z)
+    return ErrorCode.OK,100
+end
+function class.WorldContainer:addStorageBox(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:removeStorageBox(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:checkStorage(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:clearStorageBox(x,y,z)
+    return ErrorCode.OK
+end
+function class.WorldContainer:checkStorageEmptyGrid(x,y,z,itemid)
+    return ErrorCode.OK
+end
+function class.WorldContainer:setStorageItem(x,y,z.offset,itemid,num)
+    return ErrorCode.OK
+end
+function class.WorldContainer:getStorageItem(x,y,z,offset)
+    return ErrorCode.OK,10,1
+end
+function class.WorldContainer:addStorageItem(x,y,z,itemid,num)
+    return ErrorCode.OK,10
+end
+function class.WorldContainer:removeStorageItemByID(x,y,z,itemid,num)
+    return ErrorCode.OK
+end
+function class.WorldContainer:removeStorageItemByIndex(x,y,z,offset,num)
+    return ErrorCode.OK
+end
+function class.WorldContainer:addItemToContainer(x,y,z,itemid,num)
+    return ErrorCode.OK,10
+end
+function class.WorldContainer:removeContainerItemByID(x,y,z,itemid,num)
+    return ErrorCode.OK
+end
+function class.WorldContainer:clearContainer(x,y,z)
+    return ErrorCode.OK
+end
+function class.Backpack:getBackpackBarIDRange(bartype)
+    return ErrorCode.OK,1,10
+end
+function class.Backpack:getBackpackBarSize(bartype)
+    return ErrorCode.OK,size
+end
+function class.Backpack:setGridItem(playerid,gridid,itemid,num,duiability)
+    return ErrorCode.OK
+end
+function class.Backpack:removeGridItem(playerid,gridid,num)
+    return ErrorCode.OK
+end
+function class.Backpack:removeGridItemByItemID(playerid,itemid,num)
+    return ErrorCode.OK
+end
+function class.Backpack:clearPack(playerid,bartype)
+    return ErrorCode.OK
+end
+function class.Backpack:clearAllPack(playerid)
+    return
+end
+function class.Backpack:moveGridItem(playerid,gridsrc,girddst,num)
+    return ErrorCode.OK
+end
+function class.Backpack:swapGridItem(playerid,gridsrc,griddst)
+    return ErrorCode.OK
+end
+function class.Backpack:enoughSpaceForItem(playerid,itemid,num)
+    return ErrorCode.OK
+end
+function class.Backpack:calcSpaceNumForItem(olayerid,itemid)
+    return ErrorCode.OK,10
+end
+function class.Backpack:getBackpackBarValidList(playerid,bartype)
+    local ay = {1,2,3,4,5,6,7,8,9}
+    return ErrorCode.OK,10,ay
+end
+function class.Backpack:getBackpackBarItemList(playerid,bartype)
+    local ay = {1,2,3,4,5,6,7,8,9}
+    return ErrorCode.OK,10，ay
+end
+function class.Backpack:hasItemByBackpackBar(playerid,bartype,itemid)
+    return ErrorCode.OK
+end
+function class.Backpack:getItemNumByBackpackBar(playerid,bartype,itemid)
+    local ay = {1,2,3,4,5,6,7,8,9}
+    return ErrorCode.OK,10,ay
+end
+function class.Backpack:getGridItemID(palyerid,gridid)
+    return ErrorCode.OK,10,10
+end
+function class.Backpack:getGridItemName(playerid,geidid)
+    return ErrorCode.OK,"小恐龙最帅"
+end
+function class.Backpack:getGridStack(playerid,gridid)
+    return ErrorCode.OK,10,10
+end
+function class.Backpack:getGridDurability(playerid,gridid)
+    return ErrorCode.OK,10,10
+end
+function class.Backpack:getGridEnchantList(playerid,gridid)
+    local ay = {2,5,3,2,5}
+    return ErrorCode.OK,10,ay
+end
+function class.Backpack:getGridToolType(palyerid,gridid)
+    return ErrorCode.OK,10
+end
+function class.Backpack:addItem(playerid,itemid,num)
+    return ErrorCode.OK
+end
+function class.Backpack:discardItem(playerid,gridid,num)
+    return ErrorCode.OK
+end
+function class.Backpack:getGridNum(playerid,gridid)
+    return ErrorCode.OK
+end
+function class.Creature:getAttr(objid,attrtype)
+    return ErrorCode.OK,value
+end
+function class.Creature:setAttr(objid,attrtype)
+    return 
+end
+function class.Creature:isAdult(objid)
+    return ErrorCode.OK
+end
+function class.Creature:setOxygenNeed(objid,v)
+    return ErrorCode.OK
+end
+function class.Creature:getTamedOwnerID(objid)
+    return ErrorCode.OK,0
+end
+function class.Creature:setPanic(objid,v)
+    return ErrorCode.OK
+end
+function class.Creature:setAIActive(objid,v)
+    return ErrorCode.OK
+end
+function class.Creature:getActorID(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getActorName(objid)
+    return ErrorCode.OK,"小恐龙天下第一帅"
+end
+function class.Creature:addModAttrib(objid,attrtype,value)
+    return ErrorCode.OK
+end
+function class.Creature:getModAttrib(objid,attrtype)
+    return ErrorCode.OK,10
+end
+function class.Creature:setTeam(objids,teamid)
+    return ErrorCode.OK
+end
+function class.Creature:getTeam(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getMaxFood(objid)
+    return ErrorCode.OK,value
+end
+function class.Creature:getFood(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:setFood(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:getHpRecover(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getMaxOxygen(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getWalkSpeed(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getSwimSpeed(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getJumpPower(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getMass(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getDodge(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getPunchAttack(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getRangeAttack(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getPunchDefense(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:getRangeDefense(objid)
+    return ErrorCode.OK,10
+end
+function class.Creature:setMaxHp(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setHP(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setHpRecover(objid)
+    return ErrorCode.OK
+end
+function class.Creature:setOxygen(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setWalkSpeed(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setSwimSpeed(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setJumpPower(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setDodge(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setPunchAttack(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setRangeAttack(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setPunchDefense(objid,val)
+    return ErrorCode.OK
+end
+function class.Creature:setRangeDefense(objid,val)
+    return ErrorCode.OK
+end
+function class.Area:createAreaRect(pos,dim)
+    return ErrorCode.OK,10
+end
+function class.Area:createAreaRectByRange(posBeg,posEnd)
+    return ErrorCode.OK,10
+end
+function class.Area:destroyArea(areid)
+    return ErrorCode.OK
+end
+function class.Area:getAreaByPos(pos)
+    return ErrorCode.OK,10
+end
+function class.Area:offsetArea(areaid,x,y,z)
+    return ErrorCode.OK
+end
+function class.Area:expandArea(areaid,x,y,z)
+    return ErrorCode.OK
+end
+function class.Area:getAreaCenter(areaid)
+    local ps = {1,1,1}
+    return ErrorCode.OK,ps
+end
+function class.Area:getAreaRectLength(areaid)
+    return ErrorCode.OK,1,1,1
+end
+function class.Area:getAreaRectRange(areaid)
+    local ay = {1,1,1}
+    local ps = {2,2,2}
+    return ErrorCode.OK,ay,ps
+end
+function class.Area:getRandomPos(areaid)
+    ps = {1,1,1}
+    return ErrorCode.OK,ps
+end
+function class.Area:objInArea(areaid,objid)
+    return ErrorCode.OK
+end
+function class.Area:blockInArea(areaid,blockid)
+    return ErrorCode.OK
+end
+function class.Area:posInArea(pos,areaid)
+    return ErrorCode.OK
+end
+function class.Area:getAreaPlayers(areaid)
+    local ps = {1,2,3,4,5,6,7,8,9,0}
+    return ErrorCode.OK,ps
+end
+function class.Area:getAreaCreatures(areaid)
+    local ps = {1,1,1}
+    return ErrorCode.OK,ps
+end
+function class.Area:fillBlock(areaid,blockid,face)
+    return ErrorCode.OK
+end
+function class.Area:clearAllBlock(areaid,blockid)
+    return ErrorCode.OK
+end
+function class.Area:cloneArea(areaid,deststartpos)
+    return ErrorCode.OK
+end
+function class.Area:getPosOffset(srcpos,dim)
+    local ps = {ErrorCode.OK}
+    return ErrorCode.OK,ps
+end
+function class.Area:replaceAreaBlock(areaid,srcblockid,destblockid,face)
+    return ErrorCode.OK
+end
+function class.Area:blockInAreaRange(blockid,posbeg,posend)
+    return ErrorCode.OK
+end
+function class.Area:getAllObjsInAreaRange(posbeg,posend,objtypeidx]
+    return ErrorCode.OK
+end
+function class.Area:getAllObjsInAreaRangeByObjTypes(posbeg,posend,objtypeidxs)
+    return ErrorCode.OK
+end
+function class.Area:getAllPlayersInAreaRange(posbeg,posend)
+    return ErrorCode.OK
+end
+function class.Area:getAllCreaturesInAreaRange(posbeg,posend)
+    return ErrorCode.OK
+end
+function class.Area:fillBlockAreaRange(posbeg,posend,blockid,face)
+    return ErrorCode.OK
+end
+function class.Area:clearAllBlockAreaRange(posbeg,posend,blockid)
+    return ErrorCode.OK
+end
+function class.Area:cloneAreaRange(posbeg,posend,desrstartpos)
+    return ErrorCode.OK
+end
+function class.Area:replaceAreaRangeBlock(posbeg,posend,srcblockid,destblockid,face)
+    return ErrorCode.OK
+end
+
+
 --恭喜你到这里来了
 --你是来编代码的吗？
 --我猜你不是
 --如果是的话
 --------------------------------------------导入时上面不许复制-------------------------------------------------
 --file:main.lua
-local main = function()
-    Chat = class.Chat.new()
-    Chat:sendSystemMsg("HelloWorld",0)
-end
-ScriptSupportEvent:registerEvent([=[Game.Start]=]),main)--如果你的IDE有提示错误，请不要管他，这是已知bug
+class.Chat.sendSystemMsg("Hello,world!",0)
+--一般是这样的
+chat = class.Chat.new()
+chat.sendSystemMsg("Hello,world!",0)
