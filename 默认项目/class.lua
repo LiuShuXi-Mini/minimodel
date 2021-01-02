@@ -436,9 +436,7 @@ function class.World:stopSoundEffectOnPos(pos,soundid)
     return ErrorCode.OK
 end
 function class.World:new ()
-    local ret
-    setmetatable(ret,class.World)
-    return ret
+    return class.World
 end
 function class.Game:doGameEnd()
     return ErrorCode.OK
@@ -955,7 +953,7 @@ end
 function class.MiniTimer:isExist(id)
     return true
 end
-function class.MiniTimer:createTimer(name,owid,isprivate)
+function class.MiniTimer:createTimer(name)
     return ErrorCode.OK,10
 end
 function class.MiniTimer:deleteTimer(id)
