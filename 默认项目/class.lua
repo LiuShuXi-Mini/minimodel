@@ -764,10 +764,10 @@ function class.Player:teleportHome(objid)
     return ErrorCode.OK
 end
 function class.Player:getCurToolID(objid)
-    return ErrorCode.OK
+    return ErrorCode.OK,ret
 end
 function class.Player:getNickname(objid)
-    return ErrorCode.OK
+    return ErrorCode.OK,name
 end
 function class.Player:removeBackpackItem(objid,itemid,num)
     return ErrorCode.OK
